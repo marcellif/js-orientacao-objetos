@@ -50,12 +50,11 @@ get ativo(){
   }
 
 
- exibirInfos(tipoInfo) {
-   if (tipoInfo === "basic") {
-     return `dados básicos: ${this.#nome}`
+ exibirInfos() {
+   const tipos = {
+     basic: `dados básicos: ${this.nome}`,
+     complete: `dados completos: ${this.nome}, ${this.email}, ${this.nascimento}`
    }
-   if (tipoInfo === "complete") {
-     return `dados completos: ${this.#nome}, ${this.#email}, ${this.#nascimento}`
-   }
+   return tipos[arguments[0]]
  }
 }
