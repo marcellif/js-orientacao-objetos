@@ -17,13 +17,45 @@ export default class User{
       nome: this.#nome,
       email: this.#email,
       nascimento: this.#nascimento,
-      role: this.#nascimento,
+      role: this.#role,
       ativo: this.#ativo,
     })
   }
 
-  exibirInfos(){
-    const objUser = this.#montaObjUser()
-    return `${objUser.nome}, ${objUser.email}`
+get nome(){
+  return this.#nome
+}
+
+get email(){
+  return this.#email
+}
+
+get nascimento(){
+  return this.#nascimento
+}
+
+get role(){
+  return this.#role
+}
+
+get ativo(){
+  return this.#ativo
+}
+
+  set nome(novoNome) {
+    if (novoNome === "") {
+      throw new Error('formato do nome não é válido')
+    }
+    this.#nome = novoNome
   }
+
+
+ exibirInfos(tipoInfo) {
+   if (tipoInfo === "basic") {
+     return `dados básicos: ${this.#nome}`
+   }
+   if (tipoInfo === "complete") {
+     return `dados completos: ${this.#nome}, ${this.#email}, ${this.#nascimento}`
+   }
+ }
 }
